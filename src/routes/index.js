@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Employee = require('../models/employee');
 
-// Create Employee for adding it to collection
+// Create Employee for adding it to employee collection in db
 router.post('/add-employee', async (req, res) => {
   try {
     const employee = new Employee(req.body);
@@ -13,7 +13,7 @@ router.post('/add-employee', async (req, res) => {
   }
 });
 
-// Get all Employees list 
+// Get all Employees list, by find method of mongoose framwork and return the list of all employees.
 router.get('/', async (req, res) => {
   try {
     const employees = await Employee.find();
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Update Employee by ID
+// Update any one Employee by mongoID, id passed in params and fields to be updated passed in request body.
 router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete Employee by ID
+// Delete any one Employee by mongoID, id passed in params particular employee object deleted.
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
